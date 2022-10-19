@@ -29,6 +29,7 @@ ls_catalog() {
     ls $name -a
 }
 
+clear
 echo ""
 echo -e "$grn             ██████╗░███████╗░██████╗████████╗░█████╗░██████╗░████████╗██╗███╗░░██╗░██████╗░░░░░░░░░░
              ██╔══██╗██╔════╝██╔════╝╚══██╔══╝██╔══██╗██╔══██╗╚══██╔══╝██║████╗░██║██╔════╝░░░░░░░░░░
@@ -39,6 +40,13 @@ echo -e "$grn             ██████╗░███████╗░█
                                         Copyright by. Hellen$grn"
 echo ""
 echo -n -e "$blue Enter function [1. Restarting utils; 2. Show all in catalog]:$blue "; read input
+
+if [ "$USER" != "root" ]; then
+	echo ""
+	echo -n -e "$red[-]$red$yellow Permission Denied$yellow\n"
+	echo -n -e "$red[-]$red$yellow Can only be run by root$yellow"
+	exit
+fi
 
 if [[ $input == '1' ]]; then
     restart_service
